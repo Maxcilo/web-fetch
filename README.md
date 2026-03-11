@@ -4,13 +4,22 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](test_web_fetch.py)
 [![Twitter](https://img.shields.io/badge/Twitter-@Go8888I-1DA1F2?logo=twitter)](https://twitter.com/Go8888I)
-[![Version](https://img.shields.io/badge/Version-1.3.1-orange.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.4.0-orange.svg)](CHANGELOG.md)
 
 智能网页抓取工具，自动选择最佳方案（Scrapling 或 Jina Reader），支持微信公众号、推特、普通网页。
 
 **作者：** [@Go8888I](https://twitter.com/Go8888I)
 
 ## ✨ 特性
+
+### v1.4.0 新增功能 🎉
+
+- 🤖 **AI 摘要** - 自动生成文章摘要，提取核心观点
+- 📝 **聊天窗口显示** - 摘要直接显示在 Telegram 聊天窗口
+- 🔢 **准确字数统计** - 仅统计纯文本（去除图片、URL、Markdown 标记）
+- 📊 **完整统计信息** - 字数、图片数、时间戳
+- 💾 **双格式输出** - 同时生成 MD + PDF 文件
+- 📱 **Telegram 集成** - 自动发送文件到 Telegram
 
 ### v1.3.0 新增功能 🎉
 
@@ -65,8 +74,25 @@ curl --version
 ### 基本用法
 
 ```bash
-# 抓取普通网页
+# 方案 1：AI 摘要版（推荐）⭐⭐⭐
+python3 web_fetch_with_summary.py https://example.com
+# 输出：文章摘要 + MD 文件 + PDF 文件 + 发送到 Telegram
+
+# 方案 2：PDF 版
+python3 web_fetch_pdf.py https://example.com
+# 输出：MD 文件 + PDF 文件
+
+# 方案 3：图片嵌入版
+python3 web_fetch_embedded.py https://example.com
+# 输出：MD 文件（图片 Base64 嵌入）
+
+# 方案 4：增强版
+python3 web_fetch_enhanced.py https://example.com
+# 输出：MD 文件（自动保存 + Telegram）
+
+# 方案 5：基础版
 python3 web_fetch.py https://example.com
+# 输出：纯文本到终端
 
 # 抓取微信公众号文章
 python3 web_fetch.py https://mp.weixin.qq.com/s/xxxxx

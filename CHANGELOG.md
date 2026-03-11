@@ -5,6 +5,53 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-03-11
+
+### Added
+- 新增 `web_fetch_with_summary.py` - AI 驱动的文章摘要功能 ⭐⭐⭐
+- 自动提取纯文本（去除 Base64 图片数据）
+- 生成文章摘要并显示在聊天窗口
+- 准确的字数统计（仅统计纯文本，去除图片、URL、Markdown 标记）
+- 同时保存 MD + PDF 文件
+- 自动发送文件到 Telegram
+
+### Features
+- 📝 AI 分析文章核心观点（提取 3-5 个关键点）
+- 🔢 准确字数统计（去除图片、URL、Markdown 标记）
+- 📊 完整统计信息（字数、图片数、时间戳）
+- 💾 双格式输出（MD + PDF）
+- 📱 Telegram 集成（MEDIA 标签）
+
+### Usage
+```bash
+python3 web_fetch_with_summary.py <url>
+```
+
+### Output Format
+- 📄 文章标题
+- 🔗 来源 URL
+- 📝 AI 生成的摘要（核心观点，不超过 300 字）
+- 📊 统计信息（准确字数、图片数、时间戳）
+- 💾 文件路径（MD + PDF）
+
+### Technical Details
+- 使用 `extract_text_only()` 去除所有图片数据
+- 使用正则表达式去除 Markdown 标记
+- 字数统计：纯文本字符数（不含空白）
+- 摘要生成：提取前 5000 字符进行分析
+- 后备方案：简单文本提取（前 5 段，不超过 300 字）
+
+### Example
+```
+📄 **GPT5.4发布，修正了比Claude便宜的大bug**
+🔗 **来源：** https://mp.weixin.qq.com/s/...
+📝 **摘要：**
+一觉醒来，GPT又上新了...
+📊 **统计：**
+- 字数：890 字
+- 图片：7 张
+```
+
 ## [1.3.1] - 2026-03-11
 
 ### Fixed
