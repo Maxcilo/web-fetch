@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2026-03-11
+
+### Fixed
+- 修复微信文章标题提取问题
+- Scrapling 现在从 meta og:title 提取标题
+- 修复文件名使用图片链接的问题
+- 改进标题提取逻辑（跳过图片链接、空行）
+
+### Changed
+- Scrapling 返回格式：(content, title) 元组
+- 支持从 "标题: " 前缀提取标题
+- 文件名使用正确的中文标题
+
+### Testing
+- 微信文章：标题提取正确 ✅
+- 41 张图片嵌入成功（包含 3 个 GIF）
+- PDF 生成：13 MB
+- Markdown 生成：44 MB
+
 ## [1.3.0] - 2026-03-11
 
 ### Added
