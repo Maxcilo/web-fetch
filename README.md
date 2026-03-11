@@ -4,13 +4,21 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](test_web_fetch.py)
 [![Twitter](https://img.shields.io/badge/Twitter-@Go8888I-1DA1F2?logo=twitter)](https://twitter.com/Go8888I)
-[![Version](https://img.shields.io/badge/Version-1.2.0-orange.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.3.0-orange.svg)](CHANGELOG.md)
 
 智能网页抓取工具，自动选择最佳方案（Scrapling 或 Jina Reader），支持微信公众号、推特、普通网页。
 
 **作者：** [@Go8888I](https://twitter.com/Go8888I)
 
 ## ✨ 特性
+
+### v1.3.0 新增功能 🎉
+
+- 📕 **PDF 生成** - 自动生成 PDF 文件（A4 格式）
+- 🎨 **美化样式** - 标题、段落、代码块、表格样式
+- 🖼️ **图片适配** - 自动缩放，避免截断
+- 📄 **同时输出** - Markdown + PDF 双文件
+- 🇨🇳 **中文支持** - 完美支持中文字体
 
 ### v1.2.0 新增功能 🎉
 
@@ -46,6 +54,9 @@
 ```bash
 # 安装 Scrapling
 pip install scrapling html2text curl-cffi browserforge
+
+# 安装 PDF 生成依赖（v1.3.0 新增）
+pip install weasyprint markdown Pillow
 
 # 确保 curl 已安装（系统自带）
 curl --version
@@ -97,6 +108,26 @@ python3 web_fetch_embedded.py https://example.com
 # 适合图片不多的文章（< 5 张）
 ```
 
+**推荐：PDF 版本（v1.3.0 新增）⭐⭐**
+```bash
+# 同时生成 Markdown + PDF
+python3 web_fetch_pdf.py https://example.com
+
+# 生成两个文件：
+# - article.md（Markdown 文件，图片嵌入）
+# - article.pdf（PDF 文件，A4 格式）
+```
+
+**PDF 功能特点：**
+- 📕 A4 纸张格式，2cm 边距
+- 🎨 美化样式（标题分级、段落对齐）
+- 🖼️ 图片自动适配（max-height: 800px）
+- 📃 避免图片跨页断裂
+- 🇨🇳 完美支持中文字体
+- 💻 代码高亮
+- 📊 表格样式
+- 💬 引用块样式
+
 **可选：不含图片版本（文件更小）**
 ```bash
 # 如果不需要图片，使用增强版
@@ -119,11 +150,12 @@ python3 web_fetch_with_images.py https://example.com
 
 **版本对比：**
 
-| 版本 | 图片处理 | 文件大小 | 适用场景 |
-|------|---------|---------|---------|
-| web_fetch_embedded.py ⭐ | Base64 嵌入 | 较大 | 默认推荐，图片直接显示 |
-| web_fetch_enhanced.py | 不含图片 | 较小 | 只需要文本内容 |
-| web_fetch_with_images.py | 下载到本地 | 分离 | 需要独立管理图片 |
+| 版本 | 图片处理 | 输出格式 | 文件大小 | 适用场景 |
+|------|---------|---------|---------|---------|
+| web_fetch_pdf.py ⭐⭐ | Base64 嵌入 | MD + PDF | 较大 | 推荐，阅读体验最佳 |
+| web_fetch_embedded.py ⭐ | Base64 嵌入 | MD | 较大 | 默认推荐，图片直接显示 |
+| web_fetch_enhanced.py | 不含图片 | MD | 较小 | 只需要文本内容 |
+| web_fetch_with_images.py | 下载到本地 | MD + 图片 | 分离 | 需要独立管理图片 |
 
 **图片功能特点：**
 - 📷 自动识别文章中的所有图片

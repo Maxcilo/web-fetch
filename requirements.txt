@@ -4,8 +4,15 @@
 Python >= 3.8
 
 ## Core Dependencies
-# 无需额外的 Python 包依赖
-# 使用 Python 标准库
+scrapling>=0.2.0
+html2text>=2020.1.16
+curl-cffi>=0.5.0
+browserforge>=1.0.0
+
+## PDF Generation Dependencies (v1.3.0)
+weasyprint>=68.0
+markdown>=3.0
+Pillow>=10.0
 
 ## System Dependencies
 # curl - 用于 Jina Reader
@@ -14,10 +21,12 @@ Python >= 3.8
 # CentOS/RHEL: yum install curl
 # macOS: brew install curl
 
-## External Scripts
-# Scrapling - 需要单独安装
-# 位置: ../scrapling/scrapling_fetch.py
-# 或通过环境变量 SCRAPLING_PATH 指定
+## Installation
+# 基本安装
+pip install scrapling html2text curl-cffi browserforge
+
+# PDF 功能安装（v1.3.0）
+pip install weasyprint markdown Pillow
 
 ## Optional Dependencies (for future enhancements)
 # requests>=2.28.0  # 替代 curl，提升性能
@@ -29,10 +38,3 @@ Python >= 3.8
 # black>=22.0.0     # 代码格式化
 # pylint>=2.0.0     # 代码检查
 # mypy>=0.900       # 类型检查
-
-## Installation
-# 基本安装（无需额外依赖）
-# python3 web_fetch.py https://example.com
-
-# 开发环境安装
-# pip install pytest black pylint mypy

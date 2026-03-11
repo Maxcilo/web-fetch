@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-03-11
+
+### Added
+- 新增 `web_fetch_pdf.py` - PDF 生成功能 ⭐
+- 同时生成 Markdown + PDF 文件
+- PDF 美化样式（标题、段落、代码块、表格）
+- 中文字体支持
+- 图片嵌入到 PDF
+- A4 纸张格式，2cm 边距
+
+### Fixed
+- 修复 PDF 图片高度问题（添加 max-height: 800px）
+- 修复图片跨页断裂（page-break-inside: avoid）
+- 优化图片显示（自动缩放，居中）
+
+### Dependencies
+- 新增依赖：weasyprint, markdown, Pillow
+
+### Technical Details
+- PDF 引擎：WeasyPrint
+- Markdown 解析：Python-Markdown
+- 图片处理：Pillow
+- 样式：自定义 CSS
+
 ## [1.2.0] - 2026-03-11
 
 ### Added
