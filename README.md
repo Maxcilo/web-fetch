@@ -88,7 +88,24 @@ python3 web_fetch_enhanced.py https://example.com 5000
 
 ### 图片功能用法（v1.2.0 新增）
 
-**方案 1：下载图片到本地**
+**默认推荐：Base64 嵌入版（图片自动嵌入）⭐**
+```bash
+# 默认使用图片嵌入版本
+python3 web_fetch_embedded.py https://example.com
+
+# 生成单个 MD 文件，图片直接显示
+# 适合图片不多的文章（< 5 张）
+```
+
+**可选：不含图片版本（文件更小）**
+```bash
+# 如果不需要图片，使用增强版
+python3 web_fetch_enhanced.py https://example.com
+
+# 只保存文本内容，文件更小
+```
+
+**可选：下载图片到本地**
 ```bash
 # 下载文章和所有图片
 python3 web_fetch_with_images.py https://example.com
@@ -100,14 +117,13 @@ python3 web_fetch_with_images.py https://example.com
 #   - image_002.png
 ```
 
-**方案 2：Base64 嵌入（推荐）⭐**
-```bash
-# 图片嵌入到 Markdown 中
-python3 web_fetch_embedded.py https://example.com
+**版本对比：**
 
-# 生成单个 MD 文件，图片直接显示
-# 适合图片不多的文章（< 5 张）
-```
+| 版本 | 图片处理 | 文件大小 | 适用场景 |
+|------|---------|---------|---------|
+| web_fetch_embedded.py ⭐ | Base64 嵌入 | 较大 | 默认推荐，图片直接显示 |
+| web_fetch_enhanced.py | 不含图片 | 较小 | 只需要文本内容 |
+| web_fetch_with_images.py | 下载到本地 | 分离 | 需要独立管理图片 |
 
 **图片功能特点：**
 - 📷 自动识别文章中的所有图片
@@ -115,13 +131,7 @@ python3 web_fetch_embedded.py https://example.com
 - 🔄 更新 Markdown 图片路径
 - 📊 显示下载进度和统计
 - ✅ 修复微信图片（data-src → src）
-
-**方案对比：**
-
-| 方案 | 优点 | 缺点 | 适用场景 |
-|------|------|------|---------|
-| 下载到本地 | 文件小，图片独立 | 需要打包 | 图片多的文章 |
-| Base64 嵌入 | 单文件，直接显示 | 文件大 | 图片少的文章 |
+- 💡 智能提示：自动提醒用户可选版本
 
 ### Python 调用
 
