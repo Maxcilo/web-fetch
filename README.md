@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](test_web_fetch.py)
 [![Twitter](https://img.shields.io/badge/Twitter-@Go8888I-1DA1F2?logo=twitter)](https://twitter.com/Go8888I)
+[![Version](https://img.shields.io/badge/Version-1.1.0-orange.svg)](CHANGELOG.md)
 
 智能网页抓取工具，自动选择最佳方案（Scrapling 或 Jina Reader），支持微信公众号、推特、普通网页。
 
