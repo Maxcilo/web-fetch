@@ -157,11 +157,19 @@ def main():
         print(f"❌ {result}", file=sys.stderr)
         sys.exit(1)
     
+    # 检查是否有图片
+    has_images = '![](data:image/' in article.content
+    
     # 输出结果
     print(f"\n✅ 抓取成功！", file=sys.stderr)
     print(f"📄 标题: {article.title}", file=sys.stderr)
     print(f"📁 文件: {result}", file=sys.stderr)
     print(f"🔧 方案: {article.method}", file=sys.stderr)
+    
+    # 提示用户可选版本
+    if has_images:
+        print(f"\n💡 提示: 当前使用图片嵌入版本（文件较大）", file=sys.stderr)
+        print(f"   如需不含图片的版本，请使用: web_fetch_enhanced.py", file=sys.stderr)
     
     # 发送文件到 Telegram
     print(f"\nMEDIA:{result}")
