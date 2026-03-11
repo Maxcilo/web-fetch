@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-03-11
+
+### Added
+- 新增 `web_fetch_with_images.py` - 下载图片到本地
+- 新增 `web_fetch_embedded.py` - 图片 Base64 嵌入版 ⭐
+- 图片自动识别和提取
+- 图片下载功能（支持 curl）
+- Base64 图片嵌入（单文件，直接显示）
+- 图片下载进度显示
+
+### Fixed
+- 修复微信图片无法显示问题（data-src → src）
+- 修复 Scrapling 图片提取逻辑
+- 优化图片 URL 处理（相对路径转绝对路径）
+
+### Changed
+- 优化图片处理流程
+- 改进错误提示信息
+- 添加图片统计信息
+
+### Technical Details
+- 支持 JPEG, PNG, GIF, WebP, SVG 格式
+- 自动推测 MIME 类型
+- 跳过 base64 图片（避免重复编码）
+- 30 秒下载超时
+- 最多 5 次重定向
+
 ## [1.1.0] - 2026-03-11
 
 ### Added

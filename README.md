@@ -4,13 +4,21 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](test_web_fetch.py)
 [![Twitter](https://img.shields.io/badge/Twitter-@Go8888I-1DA1F2?logo=twitter)](https://twitter.com/Go8888I)
-[![Version](https://img.shields.io/badge/Version-1.1.0-orange.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/Version-1.2.0-orange.svg)](CHANGELOG.md)
 
 智能网页抓取工具，自动选择最佳方案（Scrapling 或 Jina Reader），支持微信公众号、推特、普通网页。
 
 **作者：** [@Go8888I](https://twitter.com/Go8888I)
 
 ## ✨ 特性
+
+### v1.2.0 新增功能 🎉
+
+- 📷 **图片下载** - 自动下载文章中的所有图片
+- 🖼️ **Base64 嵌入** - 图片转 base64 嵌入到 Markdown（推荐）
+- 📦 **打包发送** - MD 文件 + 图片目录打包
+- 🔍 **智能识别** - 自动提取图片 URL
+- 📊 **进度显示** - 下载进度和统计信息
 
 ### v1.1.0 新增功能 🎉
 
@@ -77,6 +85,43 @@ python3 web_fetch_enhanced.py https://example.com 5000
 - 📤 自动发送到 Telegram（通过 MEDIA 标签）
 - 📊 终端显示文章摘要和预览（前 500 字符）
 - 🏷️ 包含标题、URL、时间、抓取方案等信息
+
+### 图片功能用法（v1.2.0 新增）
+
+**方案 1：下载图片到本地**
+```bash
+# 下载文章和所有图片
+python3 web_fetch_with_images.py https://example.com
+
+# 生成文件：
+# - article.md（Markdown 文件）
+# - article_images/（图片目录）
+#   - image_001.jpg
+#   - image_002.png
+```
+
+**方案 2：Base64 嵌入（推荐）⭐**
+```bash
+# 图片嵌入到 Markdown 中
+python3 web_fetch_embedded.py https://example.com
+
+# 生成单个 MD 文件，图片直接显示
+# 适合图片不多的文章（< 5 张）
+```
+
+**图片功能特点：**
+- 📷 自动识别文章中的所有图片
+- ⬇️ 下载图片（支持 JPEG, PNG, GIF, WebP, SVG）
+- 🔄 更新 Markdown 图片路径
+- 📊 显示下载进度和统计
+- ✅ 修复微信图片（data-src → src）
+
+**方案对比：**
+
+| 方案 | 优点 | 缺点 | 适用场景 |
+|------|------|------|---------|
+| 下载到本地 | 文件小，图片独立 | 需要打包 | 图片多的文章 |
+| Base64 嵌入 | 单文件，直接显示 | 文件大 | 图片少的文章 |
 
 ### Python 调用
 
