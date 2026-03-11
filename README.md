@@ -12,6 +12,16 @@
 
 ## ✨ 特性
 
+### v1.1.0 新增功能 🎉
+
+- 💾 **自动保存** - 自动保存为 MD 文件（带元数据）
+- 📤 **Telegram 集成** - 自动发送文件到 Telegram
+- 📊 **文章摘要** - 终端显示文章信息和预览
+- 🏷️ **元数据支持** - 标题、URL、时间、抓取方案
+- 📝 **增强版工具** - `web_fetch_enhanced.py`
+
+### 核心特性
+
 - 🎯 **智能路由** - 自动选择最佳抓取方案
 - 🔄 **自动降级** - 主方案失败后自动切换备用方案
 - 🛡️ **安全可靠** - URL 验证、参数检查、内存限制
@@ -49,8 +59,28 @@ python3 web_fetch.py https://x.com/user/status/123456
 python3 web_fetch.py https://example.com 5000
 ```
 
+### 增强版用法（v1.1.0 新增）
+
+```bash
+# 使用增强版工具（自动保存 MD 文件并发送到 Telegram）
+python3 web_fetch_enhanced.py https://example.com
+
+# 抓取微信公众号文章
+python3 web_fetch_enhanced.py https://mp.weixin.qq.com/s/xxxxx
+
+# 指定最大字符数
+python3 web_fetch_enhanced.py https://example.com 5000
+```
+
+**增强版输出：**
+- 📁 自动保存为 MD 文件（包含元数据）
+- 📤 自动发送到 Telegram（通过 MEDIA 标签）
+- 📊 终端显示文章摘要和预览（前 500 字符）
+- 🏷️ 包含标题、URL、时间、抓取方案等信息
+
 ### Python 调用
 
+**基础版：**
 ```python
 from web_fetch import smart_fetch
 
@@ -62,6 +92,25 @@ if content:
     print(content)
 else:
     print(f"抓取失败：{method}")
+```
+
+**增强版（v1.1.0 新增）：**
+```python
+from web_fetch_enhanced import fetch_and_save, Article
+
+# 抓取并保存
+article, filepath = fetch_and_save("https://example.com")
+
+if article:
+    print(f"标题：{article.title}")
+    print(f"URL：{article.url}")
+    print(f"时间：{article.timestamp}")
+    print(f"方案：{article.method}")
+    print(f"文件：{filepath}")
+    print(f"\n内容预览：")
+    print(article.content[:500])
+else:
+    print(f"抓取失败：{filepath}")
 ```
 
 ## 📋 智能路由策略
