@@ -3,8 +3,11 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)](test_web_fetch.py)
+[![Twitter](https://img.shields.io/badge/Twitter-@Go8888I-1DA1F2?logo=twitter)](https://twitter.com/Go8888I)
 
 智能网页抓取工具，自动选择最佳方案（Scrapling 或 Jina Reader），支持微信公众号、推特、普通网页。
+
+**作者：** [@Go8888I](https://twitter.com/Go8888I)
 
 ## ✨ 特性
 
@@ -275,9 +278,11 @@ MIT License
 
 ## 👤 作者
 
+**[@Go8888I](https://twitter.com/Go8888I)** - 推特关注获取更多更新
+
 大富小姐姐 🎀
 
 ---
 
-**评分：** 8.7/10 ⭐⭐⭐⭐⭐  
+**评分：** 9.3/10 ⭐⭐⭐⭐⭐  
 **状态：** 生产环境可用 ✅
