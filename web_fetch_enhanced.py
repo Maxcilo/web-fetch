@@ -14,22 +14,36 @@ from web_fetch import smart_fetch
 class Article:
     """文章数据结构"""
     
-    def __init__(self, url: str, content: str, method: str):
+    def __init__(self, url: str, content: str, method: str, title: str = None):
         self.url = url
         self.content = content
         self.method = method
         self.timestamp = datetime.now().isoformat()
-        self.title = self._extract_title(content)
+        self.title = title if title else self._extract_title(content)
         
     def _extract_title(self, content: str) -> str:
         """从内容中提取标题"""
+        # 尝试从 Scrapling 返回的标题行提取
+        if content.startswith('标题: '):
+            lines = content.split('\n')
+            return lines[0].replace('标题: ', '').strip()[:100]
+        
+        # 否则从内容提取
         lines = content.strip().split('\n')
         for line in lines:
             line = line.strip()
+            # 跳过图片链接
+            if line.startswith('![]('):
+                continue
+            # 跳过空行
+            if not line:
+                continue
+            # 如果是 Markdown 标题
+            if line.startswith('# '):
+                return line[2:].strip()[:100]
+            # 如果是普通文本
             if line and not line.startswith('#'):
-                return line[:100]  # 取前100个字符作为标题
-            elif line.startswith('# '):
-                return line[2:].strip()
+                return line[:100]
         return "无标题"
     
     def to_dict(self) -> Dict:
