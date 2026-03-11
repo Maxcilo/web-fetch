@@ -65,8 +65,13 @@ def get_scrapling_path() -> str:
     
     # 默认路径
     possible_paths = [
+        # 1. 同目录下（GitHub 仓库结构）
+        Path(__file__).parent / "scrapling_fetch.py",
+        # 2. 父目录的 scrapling 文件夹（OpenClaw skills 结构）
         Path(__file__).parent.parent / "scrapling" / "scrapling_fetch.py",
+        # 3. 用户 home 目录
         Path.home() / ".openclaw/workspace/skills/scrapling/scrapling_fetch.py",
+        # 4. root 目录（服务器环境）
         Path("/root/.openclaw/workspace/skills/scrapling/scrapling_fetch.py"),
     ]
     
