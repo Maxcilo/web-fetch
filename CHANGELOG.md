@@ -5,6 +5,41 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.1] - 2026-03-11
+
+### Fixed
+- 🔧 **修复路径检测问题** - 用户从 GitHub clone 后找不到 scrapling_fetch.py
+- 📦 **添加 scrapling_fetch.py** - 将 scrapling_fetch.py 添加到仓库
+- 🔍 **改进路径查找逻辑** - 优先检查同目录（GitHub 结构）
+
+### Changed
+- 更新 `get_scrapling_path()` 函数：
+  1. 优先检查同目录（GitHub clone 结构）
+  2. 然后检查父目录/scrapling（OpenClaw skills 结构）
+  3. 然后检查用户 home 目录
+  4. 最后检查 root 目录
+
+### Technical Details
+- 问题：用户 clone 仓库后，scrapling_fetch.py 不在仓库中
+- 原因：scrapling_fetch.py 在独立的 scrapling skill 中
+- 解决：将 scrapling_fetch.py 复制到 web-fetch 仓库
+- 兼容：同时支持 GitHub clone 和 OpenClaw 安装
+
+### Path Detection Order
+```python
+possible_paths = [
+    Path(__file__).parent / "scrapling_fetch.py",  # 同目录（GitHub）
+    Path(__file__).parent.parent / "scrapling" / "scrapling_fetch.py",  # OpenClaw
+    Path.home() / ".openclaw/workspace/skills/scrapling/scrapling_fetch.py",  # Home
+    Path("/root/.openclaw/workspace/skills/scrapling/scrapling_fetch.py"),  # Root
+]
+```
+
+### Testing
+- ✅ 本地测试通过
+- ✅ 临时目录测试通过
+- ✅ GitHub clone 模拟测试通过
+
 ## [1.4.0] - 2026-03-11
 
 ### Added
